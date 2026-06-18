@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="page" x1="40" y1="28" x2="88" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <!-- Left page -->
+  <path d="M36 30 L64 30 L64 98 L36 98 Q30 98 30 92 L30 36 Q30 30 36 30Z" fill="url(#page)" opacity="0.95"/>
+  <!-- Right page -->
+  <path d="M64 30 L92 30 Q98 30 98 36 L98 92 Q98 98 92 98 L64 98Z" fill="url(#page)" opacity="0.85"/>
+  <!-- Spine line -->
+  <line x1="64" y1="30" x2="64" y2="98" stroke="#c7d2fe" stroke-width="1.5"/>
+  <!-- Text lines on left page -->
+  <line x1="40" y1="44" x2="58" y2="44" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="40" y1="54" x2="56" y2="54" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <line x1="40" y1="64" x2="58" y2="64" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <line x1="40" y1="74" x2="52" y2="74" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <!-- Text lines on right page -->
+  <line x1="70" y1="44" x2="90" y2="44" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="70" y1="54" x2="88" y2="54" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <line x1="70" y1="64" x2="90" y2="64" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <line x1="70" y1="74" x2="84" y2="74" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+  <!-- Arrow arc (conversion symbol) -->
+  <path d="M96 24 Q108 24 108 40 L108 52" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M104 48 L108 54 L112 48" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+</svg>
