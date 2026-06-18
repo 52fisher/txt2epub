@@ -71,7 +71,7 @@
       <footer class="text-center py-4 text-sm text-text-secondary">
         <div class="px-6">
           <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-3"></div>
-          TXT 转 EPUB 转换器 v2.0.0
+          TXT 转 EPUB 转换器 v2.1.0
         </div>
       </footer>
     </div>
