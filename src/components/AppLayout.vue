@@ -40,9 +40,11 @@
         </button>
       </div>
 
-      <!-- Footer info -->
+      <!-- Footer version -->
       <div class="px-5 py-3 border-t border-border text-[11px] text-text-secondary">
-        TXT 转 EPUB v2.0.0
+        <button @click="showChangelog = true" class="hover:text-primary transition-colors">
+          TXT 转 EPUB <span class="text-primary/70">{{ APP_VERSION }}</span>
+        </button>
       </div>
     </aside>
 
@@ -70,8 +72,7 @@
       <!-- Footer -->
       <footer class="text-center py-4 text-sm text-text-secondary">
         <div class="px-6">
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-3"></div>
-          TXT 转 EPUB 转换器 v2.1.0
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
         </div>
       </footer>
     </div>
@@ -94,11 +95,47 @@
         <span v-if="!isConverting" class="text-sm font-normal opacity-80">({{ selectedChapters.length }} 个章节)</span>
       </button>
     </div>
+
+    <!-- Changelog Modal -->
+    <Teleport to="body">
+      <div v-if="showChangelog" class="fixed inset-0 z-[100] flex items-center justify-center" @click.self="showChangelog = false">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        <div class="relative bg-surface border border-border rounded-2xl shadow-2xl w-full max-w-lg max-h-[80vh] mx-4 flex flex-col animate-fade-in">
+          <!-- Header -->
+          <div class="px-6 py-4 border-b border-border flex items-center justify-between shrink-0">
+            <h3 class="font-semibold flex items-center gap-2">
+              <SvgIcon name="clipboard" size="18" className="text-primary" />
+              更新日志
+            </h3>
+            <button @click="showChangelog = false" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors">
+              <SvgIcon name="x" size="16" />
+            </button>
+          </div>
+          <!-- Body -->
+          <div class="flex-1 overflow-y-auto px-6 py-4 space-y-6">
+            <div v-for="log in changelogs" :key="log.version">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-primary">{{ log.version }}</span>
+                <span class="text-xs text-text-secondary">{{ log.date }}</span>
+              </div>
+              <ul class="space-y-1.5">
+                <li v-for="(item, idx) in log.changes" :key="idx" class="text-sm text-text-secondary flex items-start gap-2">
+                  <span class="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full" :class="log.dotColor || 'bg-primary'"></span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import SvgIcon from './SvgIcon.vue'
+import { APP_VERSION, changelogs } from '../constants/version.js'
 
 defineProps({
   activeNav: { type: String, default: 'file' },
@@ -112,6 +149,8 @@ defineProps({
 })
 
 defineEmits(['update:activeNav', 'toggleTheme', 'convert'])
+
+const showChangelog = ref(false)
 
 const navItems = [
   { key: 'file', label: '文件', icon: 'fileText' },
